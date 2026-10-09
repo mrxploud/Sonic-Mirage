@@ -10,6 +10,14 @@ Um projeto de **[mrxploud](https://github.com/mrxploud)** ([ByteMirage](https://
 
 Os dois jogos rodam ao mesmo tempo, dentro de um único programa. O Sonic CD desenha o mundo; o Silhouette Mirage roda escondido e fornece a personagem. Nenhum dos dois foi reescrito ou descompilado.
 
+### Por que estes dois jogos
+
+> Juntei esses dois jogos porque eles marcaram a minha infância: o Sonic foi o meu primeiro jogo de videogame, e o Silhouette Mirage foi o meu primeiro de PS1.
+>
+> — mrxploud
+
+(O projeto usa a versão de Saturn do Silhouette Mirage, que é a original de 1997; a de PlayStation saiu no ano seguinte.)
+
 > [!WARNING]
 > **Este projeto não está 100% finalizado e ainda tem bugs.** Só foi testado na primeira fase (Palmtree Panic 1), não tem som, e várias situações do jogo ainda não foram exercitadas. A lista honesta do que funciona e do que não funciona está [mais abaixo](#estado-atual).
 
@@ -216,7 +224,7 @@ O que segue é o caminho real, incluindo os erros.
 
 ### 1. A ideia
 
-mrxploud vinha acompanhando projetos de fusão de jogos como o [SkyCraft](https://github.com/chasmlol/SkyCraft), que deixa jogar Skyrim com as mecânicas do Minecraft, e quis fazer o mesmo com Silhouette Mirage e Sonic CD. A primeira hipótese era que seria preciso descompilar os jogos, começando pelo Silhouette Mirage, "linha por linha para C".
+mrxploud vinha acompanhando projetos de fusão de jogos como o [SkyCraft](https://github.com/chasmlol/SkyCraft), que deixa jogar Skyrim com as mecânicas do Minecraft, e quis fazer o mesmo com os dois jogos que marcaram a sua infância: o Sonic, o primeiro videogame, e o Silhouette Mirage, o primeiro jogo de PS1. A primeira hipótese era que seria preciso descompilar os jogos, começando pelo Silhouette Mirage, "linha por linha para C".
 
 Olhando o SkyCraft de perto, a surpresa: **ele não descompila nada**. São dois programas rodando juntos (um plugin no Skyrim, um mod no Minecraft) que conversam por memória compartilhada.
 
