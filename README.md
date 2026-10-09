@@ -1,6 +1,8 @@
-# Shyna em Sonic CD
+# Sonic Mirage
 
 **Uma fusão de dois jogos: a Shyna, de _Silhouette Mirage_ (Sega Saturn), jogável dentro das fases de _Sonic CD_ (Sega CD), com os golpes, a física e os parasitas do jogo dela.**
+
+[**Discord**](https://discord.com/invite/4H5hGwVnPn) · [**YouTube (ByteMirage)**](https://www.youtube.com/@ByteMirage) · [**Baixar o projeto (.zip)**](https://github.com/mrxploud/Sonic-Mirage/archive/refs/heads/main.zip)
 
 ![Shyna na Palmtree Panic](docs/img/04_primeira_vez.png)
 
@@ -23,6 +25,7 @@ Os dois jogos rodam ao mesmo tempo, dentro de um único programa. O Sonic CD des
 - [A jornada, passo a passo](#a-jornada-passo-a-passo)
 - [Mapa de memória](#mapa-de-memória)
 - [Estrutura do projeto](#estrutura-do-projeto)
+- [Comunidade](#comunidade)
 - [Créditos e avisos](#créditos-e-avisos)
 
 ---
@@ -74,6 +77,14 @@ Onde as regras dos dois jogos não se encontram, foi preciso escolher:
 ## Como rodar
 
 Testado apenas em **Windows 11**, com **Python 3.12**.
+
+### 0. Baixar
+
+[Baixe o `.zip`](https://github.com/mrxploud/Sonic-Mirage/archive/refs/heads/main.zip) e descompacte, ou clone:
+
+```bash
+git clone https://github.com/mrxploud/Sonic-Mirage.git
+```
 
 ### 1. Dependências
 
@@ -377,6 +388,13 @@ bios/ cores/ discs/   vazias; cada uma tem um LEIA-ME dizendo o que colocar
 Pastas criadas ao rodar e nunca publicadas: `states/` (pontos salvos), `saves/`, `out/`.
 
 ---
+
+## Comunidade
+
+Dúvidas, bugs, ideias e novidades do projeto:
+
+- **Discord:** <https://discord.com/invite/4H5hGwVnPn>
+- **YouTube:** <https://www.youtube.com/@ByteMirage>
 
 ## Créditos e avisos
 
