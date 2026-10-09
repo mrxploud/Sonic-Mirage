@@ -2,6 +2,8 @@
 
 **Uma fusão de dois jogos: a Shyna, de _Silhouette Mirage_ (Sega Saturn), jogável dentro das fases de _Sonic CD_ (Sega CD), com os golpes, a física e os parasitas do jogo dela.**
 
+Um projeto de **[mrxploud](https://github.com/mrxploud)** ([ByteMirage](https://www.youtube.com/@ByteMirage)), feito em parceria com o Claude.
+
 [**Discord**](https://discord.com/invite/4H5hGwVnPn) · [**YouTube (ByteMirage)**](https://www.youtube.com/@ByteMirage) · [**Baixar o projeto (.zip)**](https://github.com/mrxploud/Sonic-Mirage/archive/refs/heads/main.zip)
 
 ![Shyna na Palmtree Panic](docs/img/04_primeira_vez.png)
@@ -206,11 +208,15 @@ Tudo isso é feito lendo e escrevendo a memória dos dois jogos enquanto rodam e
 
 ## A jornada, passo a passo
 
-Este projeto foi feito em uma conversa de cerca de um dia entre uma pessoa e o Claude, a IA da Anthropic. A pessoa trouxe a ideia, tomou as decisões de rumo e testou; a IA investigou, escreveu o código e rodou os experimentos. O que segue é o caminho real, incluindo os erros.
+Este projeto é de **[mrxploud](https://github.com/mrxploud)** ([ByteMirage](https://www.youtube.com/@ByteMirage)), feito em parceria com o **Claude**, a IA da Anthropic, numa conversa de cerca de um dia.
+
+**A ideia da fusão, a escolha dos dois jogos, as decisões de rumo e os testes são de mrxploud.** A investigação, o código e os experimentos foram feitos pelo Claude, sob essa direção. Cada etapa abaixo nasceu de um pedido de mrxploud depois de jogar a versão anterior: os outros poderes, tomar e causar dano, o looping, agarrar e bater "igual faz no jogo dela", os sete parasitas, as TVs.
+
+O que segue é o caminho real, incluindo os erros.
 
 ### 1. A ideia
 
-Tudo começou com o [SkyCraft](https://github.com/chasmlol/SkyCraft), um projeto que deixa jogar Skyrim com as mecânicas do Minecraft. A primeira hipótese era que seria preciso descompilar os jogos, começando pelo Silhouette Mirage, "linha por linha para C".
+mrxploud vinha acompanhando projetos de fusão de jogos como o [SkyCraft](https://github.com/chasmlol/SkyCraft), que deixa jogar Skyrim com as mecânicas do Minecraft, e quis fazer o mesmo com Silhouette Mirage e Sonic CD. A primeira hipótese era que seria preciso descompilar os jogos, começando pelo Silhouette Mirage, "linha por linha para C".
 
 Olhando o SkyCraft de perto, a surpresa: **ele não descompila nada**. São dois programas rodando juntos (um plugin no Skyrim, um mod no Minecraft) que conversam por memória compartilhada.
 
@@ -224,7 +230,7 @@ Antes de decidir, valia medir o tamanho do problema. O disco do Silhouette Mirag
 - 13,4 MB de executáveis, dos quais no máximo 3,4 MB são únicos;
 - uma estimativa de 5 a 8 mil funções.
 
-Uma descompilação legível disso seria um projeto de meses ou anos, e ainda sobraria reescrever vídeo, som e CD. **Decisão: nada de descompilar. Fazer como o SkyCraft, com emuladores no lugar dos mods.** E a fusão escolhida foi a Shyna dentro das fases do Sonic CD.
+Uma descompilação legível disso seria um projeto de meses ou anos, e ainda sobraria reescrever vídeo, som e CD. Com esses números na mão, **mrxploud decidiu: nada de descompilar. Fazer como o SkyCraft, com emuladores no lugar dos mods.** E escolheu a forma da fusão: a Shyna dentro das fases do Sonic CD.
 
 ### 3. Discos que os emuladores aceitam
 
@@ -234,11 +240,11 @@ A solução veio do próprio jogo: o sistema de arquivos do disco lista cada fai
 
 ### 4. Um hospedeiro próprio
 
-Em vez de usar dois emuladores separados, a IA escreveu um pequeno "frontend" em Python ([`host/retro.py`](host/retro.py)) que carrega os núcleos libretro direto, dentro de um único processo. Ele avança os jogos quadro a quadro, injeta controle, tira capturas de tela e dá acesso à memória.
+Em vez de usar dois emuladores separados, o Claude escreveu um pequeno "frontend" em Python ([`host/retro.py`](host/retro.py)) que carrega os núcleos libretro direto, dentro de um único processo. Ele avança os jogos quadro a quadro, injeta controle, tira capturas de tela e dá acesso à memória.
 
 ![Os dois jogos dando boot no hospedeiro](docs/img/01_boot.png)
 
-Isso foi o que tornou todo o resto possível: a IA passou a poder jogar sozinha, por roteiro, e conferir o resultado olhando capturas de tela.
+Isso foi o que tornou todo o resto possível: o Claude passou a poder jogar sozinho, por roteiro, e conferir o resultado olhando capturas de tela.
 
 ### 5. Achando as personagens na memória
 
@@ -248,7 +254,7 @@ De 1 milhão de candidatos sobraram 10. A posição X dela estava em `0x060B6518
 
 ### 6. A ideia central
 
-O plano óbvio era ensinar o Silhouette Mirage a entender o cenário do Sonic CD, o que exigiria desmontar a colisão dele. A alternativa encontrada foi virar o problema de cabeça para baixo: **deixar o Sonic na fase, invisível, como corpo, e usar o Silhouette Mirage só como esteira.**
+O plano óbvio era ensinar o Silhouette Mirage a entender o cenário do Sonic CD, o que exigiria desmontar a colisão dele. mrxploud deixou a escolha técnica em aberto ("faça da maneira mais inteligente"), e a alternativa proposta pelo Claude foi virar o problema de cabeça para baixo: **deixar o Sonic na fase, invisível, como corpo, e usar o Silhouette Mirage só como esteira.**
 
 Três testes confirmaram que as peças se comportavam:
 
@@ -268,13 +274,13 @@ Juntando tudo, ela apareceu na Palmtree Panic: andando, pulando, virando (azul p
 
 ### 8. O tutorial como manual
 
-Os outros golpes não respondiam. A solução foi usar o próprio jogo como documentação: o tutorial do Silhouette Mirage tem 15 lições, e a IA percorreu todas lendo o texto em japonês das capturas de tela. De lá saiu a lista completa: dash, deslizar, deitar, bomba, refletor, agarrar, os arremessos e a troca de atributo.
+Os outros golpes não respondiam. A solução foi usar o próprio jogo como documentação: o tutorial do Silhouette Mirage tem 15 lições, e o Claude percorreu todas lendo o texto em japonês das capturas de tela. De lá saiu a lista completa: dash, deslizar, deitar, bomba, refletor, agarrar, os arremessos e a troca de atributo.
 
 ### 9. Dano e inimigos
 
 Para esconder o Sonic, a primeira versão usava o contador de "piscar após dano" dele, que também o deixava invulnerável. Para ela poder tomar dano foi preciso outro truque: apontar o mapa de sprites do Sonic para um trecho de memória cheio de zeros. Todo quadro de animação passa a ter zero peças: ele some, mas continua vulnerável.
 
-Para matar inimigos, a IA observou o jogo destruindo um do jeito normal e viu que o objeto simplesmente vira o objeto `18` (a explosão), que solta a semente sozinho. Fazer a mesma troca por fora dá o mesmo resultado.
+Para matar inimigos, o Claude observou o jogo destruindo um do jeito normal e viu que o objeto simplesmente vira o objeto `18` (a explosão), que solta a semente sozinho. Fazer a mesma troca por fora dá o mesmo resultado.
 
 ### 10. O lançador
 
@@ -293,16 +299,16 @@ Os inimigos do Sonic CD não existem dentro do Silhouette Mirage, então não h�
 Deu três problemas em sequência:
 
 - **Na lição 1 não dá para agarrar.** Só o inimigo da lição 9 ("agarrar o inimigo") é agarrável. A sala de esteira mudou para lá.
-- **A lição termina.** Quando o jogador cumpre o objetivo, o tutorial mostra "OK." e segue para a próxima lição, quebrando tudo. A IA resolveu por busca: listou os 498 bytes que mudavam após o agarrão, restaurou grupos deles a cada quadro e foi cortando pela metade o grupo que impedia a lição de terminar. Sobrou **um único byte**, `0x060C6CBD`. Mantido no valor 2, a lição nunca termina.
+- **A lição termina.** Quando o jogador cumpre o objetivo, o tutorial mostra "OK." e segue para a próxima lição, quebrando tudo. O Claude resolveu por busca: listou os 498 bytes que mudavam após o agarrão, restaurou grupos deles a cada quadro e foi cortando pela metade o grupo que impedia a lição de terminar. Sobrou **um único byte**, `0x060C6CBD`. Mantido no valor 2, a lição nunca termina.
 - **O dublê aparece na tela.** Outra busca automática achou um byte do objeto dele que o deixa invisível sem afetar a lógica.
 
 ### 12. A caça aos parasitas
 
 Esta foi a parte mais longa, e a que teve o maior erro.
 
-Por um bom tempo a IA procurou onde o jogo guarda a arma equipada, testando centenas de bytes e lendo código desmontado, sem sucesso. O tiro nunca mudava. A pista veio de uma busca na web: o jogo tem um **modo de depuração escondido** (segurar X, B e Z e apertar Start no logo da Treasure) que libera um seletor de fases e faz as lojas venderem todos os parasitas.
+mrxploud lembrou que a Shyna tem sete parasitas e pediu todos, com uma forma de trocar. Por um bom tempo o Claude procurou onde o jogo guarda a arma equipada, testando centenas de bytes e lendo código desmontado, sem sucesso. O tiro nunca mudava. A pista veio de uma busca na web: o jogo tem um **modo de depuração escondido** (segurar X, B e Z e apertar Start no logo da Treasure) que libera um seletor de fases e faz as lojas venderem todos os parasitas.
 
-A fase 1-1 travava na batalha de abertura. A pessoa sugeriu "hackear" a passagem; as duas tentativas nessa linha (teletransportar a Shyna e zerar a vida dos inimigos) não destravaram a arena. O que resolveu foi **usar o seletor para olhar o começo de todas as fases de uma vez** e achar uma que começasse perto da loja: a 2-2 começa ao lado dela.
+A fase 1-1 travava na batalha de abertura. mrxploud sugeriu "hackear" a passagem; as duas tentativas nessa linha (teletransportar a Shyna e zerar a vida dos inimigos) não destravaram a arena. O que resolveu foi **usar o seletor para olhar o começo de todas as fases de uma vez** e achar uma que começasse perto da loja: a 2-2 começa ao lado dela.
 
 ![O modo de depuração, o seletor de fases e a loja](docs/img/07_debug_loja.png)
 
@@ -402,4 +408,5 @@ Dúvidas, bugs, ideias e novidades do projeto:
 - As capturas de tela mostram os jogos originais e estão aqui apenas para ilustrar o texto.
 - A emulação é feita pelos núcleos [Genesis Plus GX](https://github.com/libretro/Genesis-Plus-GX) e [Beetle Saturn](https://github.com/libretro/beetle-saturn-libretro), do projeto libretro. Eles não são distribuídos aqui.
 - A inspiração veio do [SkyCraft](https://github.com/chasmlol/SkyCraft).
-- Código e investigação feitos com o [Claude Code](https://claude.com/claude-code).
+- **Ideia, direção e testes:** [mrxploud](https://github.com/mrxploud) ([ByteMirage](https://www.youtube.com/@ByteMirage)).
+- **Investigação e código:** Claude, da Anthropic, pelo [Claude Code](https://claude.com/claude-code), sob a direção de mrxploud.
