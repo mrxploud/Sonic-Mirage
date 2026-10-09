@@ -1,14 +1,20 @@
 # Sonic Mirage
 
+![Shyna the Hedgehog: a Shyna na tela de título do Sonic](docs/img/00_capa.webp)
+
+<sub>Capa: arte de mrxploud.</sub>
+
 **Uma fusão de dois jogos: a Shyna, de _Silhouette Mirage_ (Sega Saturn), jogável dentro das fases de _Sonic CD_ (Sega CD), com os golpes, a física e os parasitas do jogo dela.**
 
 Um projeto de **[mrxploud](https://github.com/mrxploud)** ([ByteMirage](https://www.youtube.com/@ByteMirage)), feito em parceria com o Claude.
 
 [**Discord**](https://discord.com/invite/4H5hGwVnPn) · [**YouTube (ByteMirage)**](https://www.youtube.com/@ByteMirage) · [**Baixar o projeto (.zip)**](https://github.com/mrxploud/Sonic-Mirage/archive/refs/heads/main.zip)
 
+Os dois jogos rodam ao mesmo tempo, dentro de um único programa. O Sonic CD desenha o mundo; o Silhouette Mirage roda escondido e fornece a personagem. Nenhum dos dois foi reescrito ou descompilado.
+
 ![Shyna na Palmtree Panic](docs/img/04_primeira_vez.png)
 
-Os dois jogos rodam ao mesmo tempo, dentro de um único programa. O Sonic CD desenha o mundo; o Silhouette Mirage roda escondido e fornece a personagem. Nenhum dos dois foi reescrito ou descompilado.
+<sub>O jogo rodando: a Shyna na Palmtree Panic, do Sonic CD.</sub>
 
 ### Por que estes dois jogos
 
