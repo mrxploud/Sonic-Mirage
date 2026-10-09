@@ -1,0 +1,17 @@
+# Nunca publicar: firmware e jogos protegidos por direito autoral, e tudo que deriva deles.
+bios/*
+!bios/LEIA-ME.md
+cores/*
+!cores/LEIA-ME.md
+discs/*
+!discs/LEIA-ME.md
+/Silhouette Mirage/
+/Sonic CD/
+
+# Gerados ao rodar (os estados salvos contêm a memória dos jogos)
+states/
+saves/
+out/
+
+__pycache__/
+*.pyc
